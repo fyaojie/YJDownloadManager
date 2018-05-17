@@ -1,0 +1,2 @@
+# YJDownloadManager
+文件下载工具，基于HJDownloadManager修改和优化

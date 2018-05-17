@@ -36,11 +36,10 @@ static const void *yj_downloadModelKey = @"downloadModelKey";
 
 @end
 
-@interface YJDownloadOperation (){
-    
-    BOOL _executing;
-    BOOL _finished;
-}
+@interface YJDownloadOperation ()
+
+@property (nonatomic, assign) BOOL yj_executing;
+@property (nonatomic, assign) BOOL yj_finished;
 
 @property (nonatomic, strong) NSLock *lock;
 @property (nonatomic, assign) BOOL taskIsFinished;
@@ -86,7 +85,7 @@ MJCodingImplementation
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:url cachePolicy:NSURLRequestUseProtocolCachePolicy timeoutInterval:kTimeoutInterval];
     
     // 设置请求头
-    NSString *range = [NSString stringWithFormat:@"bytes=%zd-", self.downloadModel.fileDownloadSize];
+    NSString *range = [NSString stringWithFormat:@"bytes=%ld-", (long)self.downloadModel.fileDownloadSize];
     [request setValue:range forHTTPHeaderField:@"Range"];
     
     if(!self.downloadTask){
@@ -140,7 +139,7 @@ MJCodingImplementation
     
     kKVOBlock(kIsExecuting, ^{
         [self.downloadTask suspend];
-        _executing = NO;
+        self.yj_executing = NO;
     });
 }
 
@@ -151,7 +150,7 @@ MJCodingImplementation
     
     kKVOBlock(kIsExecuting, ^{
         [self startRequest];
-        _executing = YES;
+        self.yj_executing = YES;
     });
 }
 
@@ -165,7 +164,7 @@ MJCodingImplementation
     
     kKVOBlock(kIsExecuting, ^{
         [self startRequest];
-        _executing = YES;
+        self.yj_executing  = YES;
     });
 }
 
@@ -176,8 +175,8 @@ MJCodingImplementation
     [self willChangeValueForKey:kIsFinished];
     [self willChangeValueForKey:kIsExecuting];
     
-    _executing = NO;
-    _finished = YES;
+    self.yj_executing  = NO;
+    self.yj_finished = YES;
     
     [self didChangeValueForKey:kIsExecuting];
     [self didChangeValueForKey:kIsFinished];
@@ -238,13 +237,13 @@ MJCodingImplementation
     if ([self isCancelled]){
         //若已取消则设置状态已完成
         kKVOBlock(kIsFinished, ^{
-            _finished = YES;
+            self.yj_finished = YES;
         });
         return;
     }
     
     kKVOBlock(kIsExecuting, ^{
-        _executing = YES;
+        self.yj_executing  = YES;
     });
     
     //未取消则调用main方法来执行任务
@@ -276,12 +275,12 @@ MJCodingImplementation
 }
 
 - (BOOL)isExecuting{
-    return _executing;
+    return self.yj_executing;
 }
 
 
 - (BOOL)isFinished{
-    return _finished;
+    return self.yj_finished;
 }
 
 - (BOOL)isAsynchronous{

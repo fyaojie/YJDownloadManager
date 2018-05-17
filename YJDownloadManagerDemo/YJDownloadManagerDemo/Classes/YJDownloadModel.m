@@ -7,7 +7,7 @@
 //
 
 #import "YJDownloadModel.h"
-#import <MJExtension.h>
+#import "MJExtension.h"
 #import <CommonCrypto/CommonDigest.h>
 
 /******** 通知 Begin ********/

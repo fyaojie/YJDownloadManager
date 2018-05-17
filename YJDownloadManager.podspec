@@ -25,7 +25,7 @@ Pod::Spec.new do |s|
   #   * Write the description between the DESC delimiters below.
   #   * Finally, don't worry about the indent, CocoaPods strips it!
   s.description  = <<-DESC
-  基于HJDownloadManager产生的下载工具，在原来的基础上进行优化处理
+  			基于HJDownloadManager产生的下载工具，在原来的基础上进行优化处理
                    DESC
 
   s.homepage     = "https://github.com/feng562925462/YJDownloadManager"
@@ -39,8 +39,8 @@ Pod::Spec.new do |s|
   #  Popular ones are 'MIT', 'BSD' and 'Apache License, Version 2.0'.
   #
 
-  s.license      = "MIT (example)"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
+  # s.license      = "MIT (example)"
+   s.license      = { :type => "MIT", :file => 'LICENSE' }
 
 
   # ――― Author Metadata  ――――――――――――――――――――――――――――――――――――――――――――――――――――――――― #
@@ -133,7 +133,7 @@ Pod::Spec.new do |s|
   # s.requires_arc = true
 
   # s.xcconfig = { "HEADER_SEARCH_PATHS" => "$(SDKROOT)/usr/include/libxml2" }
-   s.dependency "MJExtension"
-   s.dependency "RealReachability"
+   s.dependency "MJExtension", "~> 3.0.13"
+   s.dependency "RealReachability", "~> 1.2.0"
 
 end

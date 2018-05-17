@@ -430,11 +430,11 @@ static id instace = nil;
  *  批量下载操作
  */
 - (void)startWithDownloadModels:(NSArray<YJDownloadModel *> *)downloadModels{
-    NSLog(@">>>%@前 operationCount = %zd", NSStringFromSelector(_cmd),self.queue.operationCount);
+//    NSLog(@">>>%@前 operationCount = %zd", NSStringFromSelector(_cmd),self.queue.operationCount);
     [self.queue setSuspended:NO];
     [self addDownloadModels:downloadModels];
     [self operateTasksWithOperationType:kYJOperationType_startAll];
-    NSLog(@"<<<%@后 operationCount = %zd",NSStringFromSelector(_cmd),self.queue.operationCount);
+//    NSLog(@"<<<%@后 operationCount = %zd",NSStringFromSelector(_cmd),self.queue.operationCount);
     
     [self saveData];
 }

@@ -1,0 +1,24 @@
+PODS:
+  - MJExtension (3.0.13)
+  - RealReachability (1.2.0):
+    - RealReachability/Connection (= 1.2.0)
+    - RealReachability/Ping (= 1.2.0)
+  - RealReachability/Connection (1.2.0)
+  - RealReachability/Ping (1.2.0)
+
+DEPENDENCIES:
+  - MJExtension
+  - RealReachability
+
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - MJExtension
+    - RealReachability
+
+SPEC CHECKSUMS:
+  MJExtension: 5932755f451458eefa24239358817f8d291240c7
+  RealReachability: 5e4759f821ecc1c03f6e1db0baf682ef59468b5f
+
+PODFILE CHECKSUM: c795598a40a3f21645df5c476134d0b0399595c1
+
+COCOAPODS: 1.5.0

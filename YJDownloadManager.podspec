@@ -16,7 +16,7 @@ Pod::Spec.new do |s|
   #
 
   s.name         = "YJDownloadManager"
-  s.version      = "0.0.1"
+  s.version      = "0.0.2"
   s.summary      = "文件下载工具"
 
   # This description is used to generate tags and improve search results.
